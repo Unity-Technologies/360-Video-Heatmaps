@@ -1,0 +1,54 @@
+﻿// Each #kernel tells which function to compile; you can have many kernels
+#pragma kernel CSVRHeatMap
+
+// Create a RenderTexture with enableRandomWrite flag and set it
+// with cs.SetTexture
+RWTexture2D<float> _result;
+RWStructuredBuffer<float2> _points;
+RWStructuredBuffer<float2> _properties;
+int _numPoints;
+float _decay;
+
+RWTexture2D<float4> _composite;
+RWTexture2D<float4> _gradient;
+
+Texture2D _video;
+SamplerState sampler_video;
+
+[numthreads(8,8,1)]
+void CSVRHeatMap (uint3 id : SV_DispatchThreadID)
+{
+	float heat = _result[id.xy];
+	heat *= _decay;
+
+	float width, height;
+	_result.GetDimensions(width, height);
+
+	half h = 0;
+	for (int i = 0; i < _numPoints; ++i)
+	{
+		half dx = abs(id.x - _points[i].x);
+		half dy = id.y - _points[i].y;
+
+		if (dx > 0.5 * width) 
+			dx = width - dx;
+
+		half dist = sqrt(dx*dx + dy*dy);
+
+		half radius    = _properties[i].x;
+		half intensity = _properties[i].y;
+		
+		half hi = 1 - saturate(dist / radius);
+		h += hi * intensity;
+	}
+	heat = saturate(heat + saturate(h));
+	_result[id.xy] = heat; 
+
+	// handle composite texture	
+	float gw, gh;
+	_gradient.GetDimensions(gw, gh);
+	float4 grad = _gradient[uint2(0.99 * heat * gw, 0.99 * heat * gh)];
+	float4 rgba = _video.SampleLevel(sampler_video, float2((float)id.x / (float)width, (float)id.y / (float)height), 0);
+	rgba.xyz = (1 - grad.w) * rgba.xyz + rgba.xyz * grad.xyz * grad.w;
+	_composite[id.xy] = rgba;
+}

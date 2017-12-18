@@ -1,0 +1,19 @@
+fileFormatVersion: 2
+guid: a146546dfd6f14cf7947ab9ea67ec9c5
+timeCreated: 1512760177
+licenseType: Pro
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - _player: {instanceID: 0}
+  - shader: {fileID: 7200000, guid: ff969f478115f472980c928bc942fa56, type: 3}
+  - gradient: {instanceID: 0}
+  - renderTexture: {instanceID: 0}
+  - videoMaterial: {instanceID: 0}
+  - composite: {instanceID: 0}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

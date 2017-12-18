@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Default</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ItemType>GenericProject</ItemType>
+    <ProjectGuid>{CB6F8974-2395-4B9E-B8AE-0705AC6509F2}</ProjectGuid>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Default|AnyCPU' ">
+    <OutputPath>.\</OutputPath>
+  </PropertyGroup>
+  <ItemGroup>
+    <Folder Include="Editor\" />
+    <Folder Include="Examples\" />
+    <Folder Include="Renderer\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Editor\HeatMapDataParser.cs" />
+    <None Include="Editor\UnityAnalyticsIntegration.cs" />
+    <None Include="Examples\BotDeathTracker.cs" />
+    <None Include="Examples\HeatmapToggler.cs" />
+    <None Include="Examples\IAnalyticsDispatcher.cs" />
+    <None Include="Examples\LoginSubmissionForm.cs" />
+    <None Include="Examples\PositionTracker.cs" />
+    <None Include="Examples\UAUniqueUsername.cs" />
+    <None Include="Renderer\HeatMapRenderer.cs" />
+    <None Include="Renderer\HeatPoint.cs" />
+    <None Include="Renderer\IHeatmapRenderer.cs" />
+    <None Include="HeatMapEvent.cs" />
+    <None Include="Editor\HeatMapController.cs" />
+    <None Include="Editor\HeatMapInspector.cs" />
+  </ItemGroup>
+</Project>
