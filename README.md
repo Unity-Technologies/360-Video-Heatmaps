@@ -12,7 +12,7 @@ Note that the 360° Video heatmaps use statistical sampling appropriate for a la
 
 ## Setup
 
-1. Download and import the 360° Video Heatmaps SDK. [link]
+1. Download and import the [360° Video Heatmaps SDK](https://www.assetstore.unity3d.com/en/#!/content/106002).
 
 2. [Enable Unity Analytics](#enable-video-heatmap-analytics) for the project
 
@@ -152,7 +152,8 @@ Use the Validator at the bottom of the Analytics Services window to check that t
 
 1. In the Unity Editor, open the Services window (menu: __Window__ > __Services__).
 
-2. Click __Analytics__ on the Services window to go to the Analytics section.Note the Validator section at the bottom of the Analytics window.
+2. Click __Analytics__ on the Services window to go to the Analytics section.
+Note the Validator section at the bottom of the Analytics window.
 
 3. Press Play in the Editor to start the video.
 
